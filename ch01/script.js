@@ -274,9 +274,230 @@
 //     console.log(i);
 // }
 
-for (var i = 1; i<=5; i++) {
-    if (i==3){
-        continue;
+// for (var i = 1; i<=5; i++) {
+//     if (i==3){
+//         continue;
+//     }
+//     console.log(i);
+// }
+
+//===============Execution stack=========================
+
+// //Global exeution context
+// var name = 'Ken';
+
+// //exeution context
+// function first() {
+
+//     var a ='Hello';
+//     second();
+//     console.log(a+name);
+
+// }
+
+// //exeution context
+// function second() {
+
+//     var b = 'Hey';
+//     third();
+//     console.log(b+name);
+
+// }
+
+// //exeution context
+// function third() {
+
+//     var c='Hi';
+//     console.log(c+name);
+
+// }
+
+// first();
+
+//=================VO-Vaiable Object================================
+
+// //Excution context=====================
+// 1. 創建
+
+//    初始化空間Scope chain;
+//    創建VO-Variable Object;
+     
+//       function(arguments object)
+//       掃描function - pointer
+//       掃描variable - undefined
+
+//   this variable
+
+// 2. 運行
+
+//    進行每一行的運行
+
+
+// function foo(i) {
+//     var a = 'hello';
+//     var b = function privateB() {
+
+//     };
+//     function c() {
+
+//     }
+// }
+
+// foo(22);
+
+// //function創建階段
+// fooExutionContext = {
+//     scopechain:{...},
+//     variableObject:{
+//         arguments:{
+//           0, 22,
+//           length: 1
+//         }
+//         i:22,
+//         c:pointer to function c()
+//         a:undefined,
+//         b:undefined,
+    
+//     }
+// }
+// this{...}
+
+// //function運行階段
+// fooExecutionContext = {
+//     scopeChain:{...},
+//     variableObject:{
+//       0: 22,
+//       length:1 
+//     }
+//     i: 22,
+//     c: pointer to function c(),
+//     a: 'hello',
+//     b: pointer to function privateB()
+
+// }
+
+// this{...}
+
+//======Hoisting================================
+// sum(6,4)
+// function sum(a,b) {
+
+//     console.log(a+b);
+// }
+
+
+// sumFunc(6,4);
+// var sumFunc = function sum(a,b) {
+//     console.log(a+b);
+// }
+// sumFunc(6,4);
+
+
+// //Global execution context
+// var age = 28;
+// // console.log(age);
+
+// function foo() {
+    
+//     var age = 65;
+//     console.log(age);
+
+// }
+
+// foo(); //這是function裡面的age
+// console.log(age);//這是外面的age，也就是Global execution contex
+
+
+//====================Scope & ScopeChain===========
+
+// //Global scope [VOglobal]
+// var a ='Hello';
+// first();
+
+// // first() scope[VO1] + [VOglobal]
+// function first() {
+
+//     var b = 'Hi';
+//     second();
+
+//     //second() scope[VO2] +[VO1] + [VOglobal]
+//     function second() {
+
+//         var c = 'Hey';
+//         console.log(a + b + c);
+
+//     }
+// }
+
+
+
+// //Global scope [VOglobal]
+// var a ='Hello';
+// first();
+
+// // first() scope[VO1] + [VOglobal]
+// function first() {
+
+//     var b = 'Hi';
+//     second();
+
+//     //second() scope[VO2] +[VO1] + [VOglobal]
+//     function second() {
+
+//         var c = 'Hey';
+//         third();
+        
+//     }
+// }
+
+// function third() {
+
+//     var d ='Ken';
+//     console.log(a + b + c + d);//只看的到a跟
+
+// }
+
+
+//====================this variable=========
+
+//global object -全局對象
+// console.log(this);
+
+// 當我們使用function, 'this'就會指向global object - 全局對象
+// function thisFunc() {
+
+//     console.log(this);
+
+// }
+
+
+// 當我們使用method的時候， 'this'就會指向當前的object, methon就是在object裡面的function
+var ken = {
+    
+    name: 'ken',
+    age: 28,
+    calculate: function yearOfBirth() {
+
+        console.log(this);
+        console.log(2017 - this.age);
+        
+        function innerFunction() {
+
+            console.log(this);
+
+        }
+
+        innerFunction();
     }
-    console.log(i);
 }
+
+ken.calculate();
+
+var John = {
+
+    name: 'John',
+    age:39,    
+}
+
+John.calculate = ken.calculate;
+John.calculate();
