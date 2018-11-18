@@ -491,6 +491,15 @@ var ken = {
     }
 }
 
+function test(item) {
+    console.log(item);
+    item += 1;
+    console.log(item);
+}
+
+console.log(typeof(ken));
+
+
 ken.calculate();
 
 var John = {
