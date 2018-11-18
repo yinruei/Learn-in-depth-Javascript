@@ -472,41 +472,358 @@
 
 
 // 當我們使用method的時候， 'this'就會指向當前的object, methon就是在object裡面的function
-var ken = {
+// var ken = {
     
-    name: 'ken',
-    age: 28,
-    calculate: function yearOfBirth() {
+//     name: 'ken',
+//     age: 28,
+//     calculate: function yearOfBirth() {
 
-        console.log(this);
-        console.log(2017 - this.age);
+//         console.log(this);
+//         console.log(2017 - this.age);
         
-        function innerFunction() {
+//         function innerFunction() {
 
-            console.log(this);
+//             console.log(this);
 
-        }
+//         }
 
-        innerFunction();
-    }
-}
+//         innerFunction();
+//     }
+// }
 
-function test(item) {
-    console.log(item);
-    item += 1;
-    console.log(item);
-}
+// function test(item) {
+//     console.log(item);
+//     item += 1;
+//     console.log(item);
+// }
 
-console.log(typeof(ken));
+// console.log(typeof(ken));
 
 
-ken.calculate();
+// ken.calculate();
 
-var John = {
+// var John = {
 
-    name: 'John',
-    age:39,    
-}
+//     name: 'John',
+//     age:39,    
+// }
 
-John.calculate = ken.calculate;
-John.calculate();
+// John.calculate = ken.calculate;
+// John.calculate();
+
+//=================Primitive and Object==========================
+// var a =22;
+// var b =35;
+
+// a =35;
+
+// console.log(a);
+// console.log(b);
+
+
+// var c ={
+
+//     name: 'ken',
+    
+// }
+
+// var d = c;
+
+// c.name = 'Tom'
+// console.log(c.name);
+// console.log(c.name);
+
+// var age = 26;
+
+// var obj = {
+
+//     name: 'Tommy',
+//     lastName: 'Li',
+
+// }
+
+// function change(a,b) {
+
+//     a = 36;
+//     b.lastName = 'Wang';
+
+// }
+
+// change(age,obj);
+// console.log(age);//由於我們已經離開了function，所以呢在這裡輸出的age是Global execution context ，就是全局的變量，所以是26
+// console.log(obj.lastName);//因為他存放是一個路徑一個這樣的地址，所以他能夠改變屬性存放的結果
+// //如果需要真正改變一個值的話，我們需要用他的時候，最好是把它做唯一個object，無論到什麼地方都可以改變他的值。
+
+
+
+
+//=======================inherit繼承===========================
+//繼承一個function的結構
+
+// var tom = {
+
+//     name:'Tom',
+//     lastName:'Li',
+//     job:'designer',
+
+// }
+
+// var Person = function(name,lastName,job) {
+
+//     this.name = name;
+//     this.lastName = lastName;
+//     this.job = job;
+
+// }
+
+// Person.prototype.location = 'HongKong';
+// //prototype 原型的屬性
+
+// var kelly = new Person('Kelly','Chen','retired');
+// //new是創建一個沒有內容的對象
+// var tommy = new Person('Tommy','Huang','teacher');
+
+// console.log(kelly.location);
+// console.log(tommy.location);
+
+
+//================Object.create======================
+//繼承一個object的結構
+// var designer = {
+
+//     product:200,
+//     usingTool:'Photoshop',
+
+// }
+
+// var tommy = Object.create(designer);//創建一個新的object
+
+// tommy.name = 'Tommy';
+// tommy.lastName = 'Li';
+// tommy.job = 'Designer';
+
+
+// console.log(tommy);
+
+// var kelly = Object.create(designer, {
+
+//     name: { value: 'Kelly'},
+//     yearOfBirth: {value: 1993},
+//     job: {value: 'Desinger'},
+
+// });
+
+// console.log(kelly);
+
+//=================function做參數的妙用========================
+
+// var years = [1993, 1956, 1982, 1933];
+// function calculate(arr, func) {
+
+//     var array = [];
+//     for (var i = 0; i< arr.length; i++){
+
+//         array.push(func(arr[i]));
+
+//     }
+//     return array;
+// }
+
+// function ageCalculate(arr){
+
+//     return 2017-arr;
+
+// }
+
+// function isFullAges(arr){
+
+//     return arr >= 18;
+
+// }
+
+// var ages = calculate(years, ageCalculate);
+// console.log(ages);
+
+// var fullAges = calculate(ages, isFullAges);
+// console.log(fullAges);
+
+
+//==============function如何做function的返回值=======================
+
+// function sayHello(job) {
+
+//     return function(name) {
+//         if (job === 'designer') {
+
+//             console.log('Hello '+ name +', you are a designer!');
+    
+//         } else if (job === 'teacher') {
+    
+//             console.log('Hello '+ name + ', you are a teacher!');
+    
+//         }
+//     }
+// }
+
+// var callFunc = sayHello('designer');
+// // console.log(callFunc)
+// callFunc('Tommy');
+// sayHello('teacher')('Ken');
+
+
+//==============IIFE===============================
+
+// // function sayHello(){
+
+// //     console.log('Hello!');
+
+// // }
+
+// // sayHello();
+
+// // IIFE - immediately invoked function expressions
+
+// (function sayHello(name){
+
+//     console.log('Hello, '+ name +'!');
+
+// })('Tommy');
+
+// console.log(name);
+
+
+//====如何借用其他object的method===========================
+
+// var person = {
+
+//     firstName: 'Tommy',
+//     lastName: 'Li',
+//     fullName: function(job1, job2){
+
+//         console.log(this.firstName + ' '+ this.lastName+ ' is a ' + job1 + ', and also is a '+ job2 +'.');
+
+//     }
+// }
+
+// // person.fullName();
+
+// var ken = {
+
+//     firstName: 'Ken',
+//     lastName: 'Cen',
+
+// }
+
+// person.fullName.call(ken, 'teacher', 'designer');
+// person.fullName.bind(ken, 'desinger')('teacher');
+
+
+//==========Global variable全局變量 & Local variable 局部變量============
+
+// function myFunction() {
+
+//     var a = 4;//局部變量
+//     console.log(a * a);
+
+// }
+
+// myFunction();
+// console.log(a);//在外面看不到a，因為a屬於局部變量，只有在function裡面才看的到
+
+
+// var a = 5; //a屬局全局變量，像是公共設施
+// function myFunction(){
+
+//     console.log(a * a);
+
+// }
+
+// myFunction();
+// console.log(a);//即使在外面輸出a，也可以看到結果
+
+// var a = 5;
+
+// function myFunction() {
+
+//     var a = 6;
+//     // a = 6;
+//     console.log(a * a);
+
+// }
+
+// myFunction();
+// console.log(a);
+// //global variable 只要他創建，存在沒有關掉的情況下，所有的代碼都可以使用他，他一直是存在
+// // local variable 則是存在時間非常短，當functiont被創建的時候他被創建，只要function被移除或執行，局部變量就會被移除
+
+
+//==========如何保護變量的值不被改變==================
+
+// var counter = 0 ;
+
+// function add() {
+
+//     counter += 1;
+
+// }
+
+// add();
+// add();
+// add();
+
+// console.log(counter);
+
+// function add() {
+
+//     var counter = 0;
+//     return counter += 1;
+
+// }
+
+// add();
+// add();
+// add();
+
+// console.log(add());
+
+// function add() {
+
+//     var counter = 0;
+
+//     function plus() {
+
+//         counter += 1;
+
+//     }
+//     plus();
+//     return counter;
+
+// }
+
+// add();
+// add();
+// add();
+
+// console.log(add());
+
+
+// var add = (function () {
+
+//     var counter = 0;
+//     return function() {
+        
+//         return counter += 1;
+
+//     }
+// })();
+
+// add();
+// add();
+
+// console.log(add());
+
+//closure
+//一個function能夠訪問到他上一級的scope 空間裡面的得變量，這種狀況的話叫function 就叫closure
+//如果我們希望某一個變量只是運行一變，我們可以把它放到IIFE裡面
+
+
