@@ -826,3 +826,23 @@ console.log(name +  ' is ' + age + ' years old.');
 //一個function能夠訪問到他上一級的scope 空間裡面的得變量，這種狀況的話叫function 就叫closure
 //如果我們希望某一個變量只是運行一變，我們可以把它放到IIFE裡面
 
+
+//
+
+var array = [4,9,16,25];
+array.forEach(myFunction);
+
+function myFunction(item, index){
+
+    console.log('index[' + index + ']: ' + item);
+
+}
+
+var newarray = array.map(function(item){
+
+    return item*2;
+
+})
+
+console.log(newarray);
+console.log(array);
