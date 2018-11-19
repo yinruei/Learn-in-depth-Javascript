@@ -18,17 +18,17 @@
 
 //=========javascript變量的特徵====================
 
-// var name = 'Kan ';
-// var age = 28;
+var name = 'Kan ';
+var age = 28;
 
-// console.log(name + age);
-// console.log(age + age);
+console.log(name + age);
+console.log(age + age);
 
-// console.log(name +  ' is '  + age + ' years old.');
+console.log(name +  ' is '  + age + ' years old.');
 
-// age = 'twenty eight';
+age = 'twenty eight';
 
-// console.log(name +  ' is ' + age + ' years old.');
+console.log(name +  ' is ' + age + ' years old.');
 
 //=========if語句================================
 
@@ -825,5 +825,4 @@
 //closure
 //一個function能夠訪問到他上一級的scope 空間裡面的得變量，這種狀況的話叫function 就叫closure
 //如果我們希望某一個變量只是運行一變，我們可以把它放到IIFE裡面
-
 
