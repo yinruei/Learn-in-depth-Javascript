@@ -471,7 +471,7 @@ console.log(name +  ' is ' + age + ' years old.');
 // }
 
 
-// 當我們使用method的時候， 'this'就會指向當前的object, methon就是在object裡面的function
+// 當我們使用method的時候， 'this'就會指向當前的object, method就是在object裡面的function
 // var ken = {
     
 //     name: 'ken',
