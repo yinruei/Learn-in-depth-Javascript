@@ -1,8 +1,8 @@
 //The first Javascript
 // console.log('hello world!');
 
-////javascript變量類型////
-// var name = 'John';
+//javascript變量類型////
+// var name = 'Edward';
 // console.log(name)
 
 // var age = 32;
@@ -18,17 +18,17 @@
 
 //=========javascript變量的特徵====================
 
-var name = 'Kan ';
-var age = 28;
+// var name = 'Kan ';
+// var age = 28;
 
-console.log(name + age);
-console.log(age + age);
+// console.log(name + age);
+// console.log(age + age);
 
-console.log(name +  ' is '  + age + ' years old.');
+// console.log(name +  ' is '  + age + ' years old.');
 
-age = 'twenty eight';
+// age = 'twenty eight';
 
-console.log(name +  ' is ' + age + ' years old.');
+// console.log(name +  ' is ' + age + ' years old.');
 
 //=========if語句================================
 
@@ -47,8 +47,15 @@ console.log(name +  ' is ' + age + ' years old.');
 //   console.log('He is male.');
 // }
 
-// //雙等於跟三等於的差別
+//雙等於跟三等於的差別，兩個等於（==）會對被判別的變數做轉換型別的動作（coercion又稱為implicit type conversion)
+// 如果是三個等於（===），那麼就不會有轉換型別的問題，因此1 === "1" 就是false
 // if (23 == '23') {
+//     console.log('equal');
+// } else {
+//     console.log('not equal');
+// }
+
+// if (23 === '23') {
 //     console.log('equal');
 // } else {
 //     console.log('not equal');
@@ -58,31 +65,37 @@ console.log(name +  ' is ' + age + ' years old.');
 
 // var number = 20;
 // if (number < 20) {
-//   //code
+//   console.log("123");//code
 // } else if (number > 30) {
-//   //code
+//   console.log("456");//code
 // } else {
-//   //code
+//   console.log("789")//code
 // }
 
-// //必須兩個條件都需要滿足
+//必須兩個條件都需要滿足
+// var number = 25;
 // if (number > 20 && number <30) {
-//   //code
+//   console.log("123");//code
 // }
 
-// //兩個條件符合一個就滿足
-// if (number < 18 || number >65) {
-//   //code
+//兩個條件符合一個就滿足
+// var number = 10;
+// if (number < 18 || number > 65) {
+//   console.log("123");//code
 // }
 
-// //!表示否定,number等於false表示true ;number等於true表示false
+//!表示否定,number等於false表示true ;number等於true表示false
+// var number = true;
 // if (!number) {
-//   //code
+//   console.log("123");//code
+// }
+// else {
+//   console.log("456");
 // }
 
 //==================switch case語句======================
 
-// var newcase = 'case 7'
+// var newcase = 'case 8'
 
 // switch (newcase) {
 //   case 'case 1':
@@ -100,10 +113,10 @@ console.log(name +  ' is ' + age + ' years old.');
 
 //===================function========================
 
-// function myfirstfirstfunction() {
-//   console.log('That is() ny firstfunction');
+// function myfirstfunction() {
+//   console.log('That is() my firstfunction');
 // }
-// myfirstfirstfunction();
+// myfirstfunction();
 
 // function sum(a,b) {
 //   var c = a + b;
@@ -117,7 +130,7 @@ console.log(name +  ' is ' + age + ' years old.');
 //   var b = a + 5;
 //   return b;
 // }
-
+// // console.log(returnFunction(3))
 // var result = returnFunction(3);
 // console.log(result);
 
@@ -155,7 +168,9 @@ console.log(name +  ' is ' + age + ' years old.');
 // console.log(ken['name']);
 
 // ken.name = 'Ken';
+// ken.lastName = 'Li'
 // console.log(ken['name']);
+// console.log(ken['lastName']);
 
 // var jacky = new Object();
 
@@ -173,7 +188,7 @@ console.log(name +  ' is ' + age + ' years old.');
 //     job:'teacher',
 //     family:['Ken','Tom','Kelly'],
 //     calculate: function yearOfBirth(myAge) {
-//         return 2017 - myAge;
+//         return 2018 - myAge
 //     }
 // }
 
@@ -183,21 +198,21 @@ console.log(name +  ' is ' + age + ' years old.');
 
 //method = function
 
-// var ken = {
-//     name: 'Ken',
-//     lastName:'Cen',
-//     age:28,
-//     job:'teacher',
-//     family:['Ken','Tom','Kelly'],
-//     calculate: function yearOfBirth(myAge) {
-//         return 2017 - this.age;
-//     }
-// }
+var ken = {
+    name: 'Ken',
+    lastName:'Cen',
+    age:28,
+    job:'teacher',
+    family:['Ken','Tom','Kelly'],
+    calculate: function yearOfBirth(myAge) {
+        return 2018 - this.age;
+    }
+}
 
-// var yeasBirthBirth = ken.calculate();
-// ken.yearOfBirth = yeasBirthBirth;
-
-// console.log(ken);
+var yearsBirth = ken.calculate();
+ken.yearOfBirth = yearsBirth;
+console.log(ken.yearOfBirth);
+console.log(ken);
 
 
 //======this method===============================
@@ -829,20 +844,34 @@ console.log(name +  ' is ' + age + ' years old.');
 
 //
 
-var array = [4,9,16,25];
-array.forEach(myFunction);
+// var array = [4,9,16,25];
 
-function myFunction(item, index){
+// array.forEach(myFunction);
 
-    console.log('index[' + index + ']: ' + item);
+// function myFunction(item, index){
 
-}
+//     console.log('index[' + index + ']: ' + item);
 
-var newarray = array.map(function(item){
+// }
 
-    return item*2;
+// var newarray = array.map(function(item){
 
-})
+//     return item*2;
 
-console.log(newarray);
-console.log(array);
+// })
+
+// console.log(newarray);
+// console.log(array);
+
+
+//slice()擷取片段
+
+// var array = ['Banana','Orange','Lemon','Apple','Mango','Lemon'];
+
+// var newarray = array.slice(1, 4);//結束的是不包含
+
+// console.log(newarray);
+
+// var index = array.indexOf('Apple');//indexOf 可返回某個指定的字符串值在字符串中首次出現的位置。
+
+// console.log(index);
